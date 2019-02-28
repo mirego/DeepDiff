@@ -10,7 +10,7 @@ import Foundation
 
 // https://en.wikipedia.org/wiki/Wagner%E2%80%93Fischer_algorithm
 
-public final class WagnerFischer: DiffAware {
+open class WagnerFischer: DiffAware {
   private let reduceMove: Bool
 
   public init(reduceMove: Bool = false) {
@@ -60,7 +60,7 @@ public final class WagnerFischer: DiffAware {
 
   // MARK: - Helper
 
-  private func isEqual<T: Hashable>(oldItem: T, newItem: T) -> Bool {
+  open func isEqual<T: Hashable>(oldItem: T, newItem: T) -> Bool {
     // Same items must have same hashValue
     if oldItem.hashValue != newItem.hashValue {
       return false
