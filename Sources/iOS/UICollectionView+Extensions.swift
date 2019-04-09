@@ -29,11 +29,10 @@ public extension UICollectionView {
       updateData()
       insideUpdate(changesWithIndexPath: changesWithIndexPath)
     }, completion: { finished in
+      // reloadRows needs to be called outside the batch
+      self.outsideUpdate(changesWithIndexPath: changesWithIndexPath)
       completion?(finished)
     })
-
-    // reloadRows needs to be called outside the batch
-    outsideUpdate(changesWithIndexPath: changesWithIndexPath)
   }
   
   // MARK: - Helper
