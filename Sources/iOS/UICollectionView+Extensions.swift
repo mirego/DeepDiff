@@ -37,7 +37,7 @@ public extension UICollectionView {
   
   // MARK: - Helper
   
-  private func insideUpdate(changesWithIndexPath: ChangeWithIndexPath) {
+  public func insideUpdate(changesWithIndexPath: ChangeWithIndexPath) {
     changesWithIndexPath.deletes.executeIfPresent {
       deleteItems(at: $0)
     }
@@ -53,7 +53,7 @@ public extension UICollectionView {
     }
   }
 
-  private func outsideUpdate(changesWithIndexPath: ChangeWithIndexPath) {
+  public func outsideUpdate(changesWithIndexPath: ChangeWithIndexPath) {
     changesWithIndexPath.replaces.executeIfPresent {
       self.reloadItems(at: $0)
     }
