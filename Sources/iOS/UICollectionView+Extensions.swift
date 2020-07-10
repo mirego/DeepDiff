@@ -17,7 +17,7 @@ public extension UICollectionView {
   ///   - section: The section that all calculated IndexPath belong
   ///   - updateData: Update your data source model
   ///   - completion: Called when operation completes
-  public func reload<T: DiffAware>(
+  func reload<T: DiffAware>(
     changes: [Change<T>],
     section: Int = 0,
     updateData: () -> Void,
@@ -37,7 +37,7 @@ public extension UICollectionView {
   
   // MARK: - Helper
   
-  public func insideUpdate(changesWithIndexPath: ChangeWithIndexPath) {
+  func insideUpdate(changesWithIndexPath: ChangeWithIndexPath) {
     changesWithIndexPath.deletes.executeIfPresent {
       deleteItems(at: $0)
     }
@@ -53,7 +53,7 @@ public extension UICollectionView {
     }
   }
 
-  public func outsideUpdate(changesWithIndexPath: ChangeWithIndexPath) {
+  func outsideUpdate(changesWithIndexPath: ChangeWithIndexPath) {
     changesWithIndexPath.replaces.executeIfPresent {
       self.reloadItems(at: $0)
     }
